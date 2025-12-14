@@ -2,7 +2,7 @@ import { PREFIX } from './constants';
 import { createNormalizer } from './normalize';
 import type { GetEntity, TEntitiesStore, EntityProcessOptions } from './types';
 import { META } from '../constants/values';
-import { TSchemaMap } from '../root/types';
+import type { TSchemaMap } from '../root/types';
 
 export class EntityProcessor {
   private readonly getEntity: GetEntity;

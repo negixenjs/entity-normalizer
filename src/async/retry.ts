@@ -1,6 +1,4 @@
-import { AxiosError } from 'axios';
-
-import type { RetryStrategy } from './types';
+import type { AxiosError, RetryStrategy } from './types';
 
 export const shouldRetryDefault = (error: AxiosError | Error): boolean => {
   // AbortController → no retry

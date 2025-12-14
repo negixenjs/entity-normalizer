@@ -6,7 +6,7 @@ import type {
   EntityCollectionSnapshot,
   SystemDeps,
 } from './types';
-import { CoreEntitiesAPI } from '../../root/coreApi/types';
+import type { CoreEntitiesAPI } from '../../root/coreApi/types';
 import { PREFIX } from '../constants';
 
 export class EntityCollection<T extends { id: string | number }, M> {

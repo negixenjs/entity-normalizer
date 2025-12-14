@@ -5,19 +5,19 @@ import {
   createMultiEntityCollection,
 } from '../../entities/collection/create-entity-collection';
 import type { MultiEntityCollection } from '../../entities/collection/public';
-import { EntityCollectionOptions } from '../../entities/collection/types';
+import type { EntityCollectionOptions } from '../../entities/collection/types';
 import {
   createEntityProcessor,
   createEntityRestorer,
 } from '../../entities/processor';
 import { createEntityRecord } from '../../entities/record/create-entity-record';
-import { EntityRecord } from '../../entities/record/entity-record';
+import type { EntityRecord } from '../../entities/record/entity-record';
 import type {
   EntitiesSnapshot,
   EntityProcessOptions,
   TEntitiesStore,
 } from '../../entities/types';
-import { TSchemaMap, PersistenceNotifier } from '../types';
+import type { TSchemaMap, PersistenceNotifier } from '../types';
 
 export function createEntitiesAPI(deps: {
   entities: TEntitiesStore;

@@ -1,7 +1,7 @@
-import { TEntitiesStore } from '../types';
+import type { TEntitiesStore } from '../types';
 import { EntityRecord } from './entity-record';
-import { CoreEntitiesAPI } from '../../root/coreApi/types';
-import { EntityCleanerStore } from '../cleaner';
+import type { CoreEntitiesAPI } from '../../root/coreApi/types';
+import type { EntityCleanerStore } from '../cleaner';
 
 export function createEntityRecord<T extends { id: string | number }, M>(
   options: { entityKey: string; recordId: string },

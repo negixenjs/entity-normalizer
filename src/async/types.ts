@@ -1,4 +1,17 @@
-import type { AxiosError } from 'axios';
+export interface AxiosError<T = unknown> extends Error {
+  isAxiosError?: boolean;
+
+  response?: {
+    status: number;
+    data?: T;
+    headers?: unknown;
+  };
+
+  request?: unknown;
+
+  code?: string;
+}
+
 
 export interface RetryStrategy {
   retries: number;
@@ -16,3 +29,5 @@ export type RunOptions<TParams, TResult> = {
 
   retryStrategy?: RetryStrategy;
 };
+
+

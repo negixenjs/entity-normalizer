@@ -1,4 +1,4 @@
-import { PersistenceNotifier } from './types';
+import type { PersistenceNotifier } from './types';
 
 export const noopPersistence: PersistenceNotifier = {
   onEntitiesChanged() {},

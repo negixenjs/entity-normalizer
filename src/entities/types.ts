@@ -1,6 +1,6 @@
 import type { EntitySchema } from './schema';
 import type { EntitiesStore } from './store';
-import { META } from '../constants/values';
+import type { META } from '../constants/values';
 
 /**
  * Runtime schema type for infra layers

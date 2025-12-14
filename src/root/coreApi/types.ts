@@ -1,13 +1,13 @@
-import {
+import type {
   EntityCollection,
   EntityProcessOptions,
   EntityRecord,
   TEntitiesStore,
 } from '../../entities';
-import { EntityCleanerStore } from '../../entities/cleaner';
-import { MultiEntityCollection } from '../../entities/collection/public';
-import { EntityCollectionOptions } from '../../entities/collection/types';
-import { PersistenceNotifier, StoresSnapshot, TSchemaMap } from '../types';
+import type { EntityCleanerStore } from '../../entities/cleaner';
+import type { MultiEntityCollection } from '../../entities/collection/public';
+import type { EntityCollectionOptions } from '../../entities/collection/types';
+import type { PersistenceNotifier, StoresSnapshot, TSchemaMap } from '../types';
 
 export interface CoreAPIExtensions {}
 

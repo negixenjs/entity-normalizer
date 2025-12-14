@@ -2,7 +2,7 @@ import { makeObservable, observable, action } from 'mobx';
 
 import { DUCK_TAG } from './marker';
 import { defaultRetryStrategy } from './retry';
-import { RunOptions, RetryStrategy } from './types';
+import type { RunOptions, RetryStrategy } from './types';
 
 export class AsyncDuck<TParams, TResult> {
   private _isLoading = false;

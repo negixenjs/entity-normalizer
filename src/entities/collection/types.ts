@@ -1,8 +1,8 @@
-import { TEntitiesStore } from '../types';
-import { EntityCollection } from './entity-collection';
-import { MULTI_COLLECTION_TAG } from './marker';
-import { CoreEntitiesAPI } from '../../root/coreApi/types';
-import { EntityCleanerStore } from '../cleaner';
+import type { TEntitiesStore } from '../types';
+import type { EntityCollection } from './entity-collection';
+import type { MULTI_COLLECTION_TAG } from './marker';
+import type { CoreEntitiesAPI } from '../../root/coreApi/types';
+import type { EntityCleanerStore } from '../cleaner';
 
 export interface SystemDeps {
   entities: TEntitiesStore;

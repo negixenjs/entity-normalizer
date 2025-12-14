@@ -1,6 +1,7 @@
 import { runInAction } from 'mobx';
 
-import { Scanner, type StoreShape } from './scanner';
+import type { Scanner} from './scanner';
+import { type StoreShape } from './scanner';
 
 export class StoreSnapshotExtractor {
   constructor(private scanner: Scanner) {}

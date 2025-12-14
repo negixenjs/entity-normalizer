@@ -1,5 +1,5 @@
-import { TEntitiesStore } from '../types';
-import { SchemaWalker } from './walker';
+import type { TEntitiesStore } from '../types';
+import type { SchemaWalker } from './walker';
 
 export class BucketCollector {
   constructor(
