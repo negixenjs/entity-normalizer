@@ -17,6 +17,7 @@
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -54,5 +55,19 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "keywords": [
+    "entity",
+    "normalization",
+    "state-management",
+    "mobx",
+    "mobx-store",
+    "data-layer",
+    "client-state",
+    "normalized-cache",
+    "frontend-architecture",
+    "domain-driven-design",
+    "ddd",
+    "reactive"
+  ]
 }
