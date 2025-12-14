@@ -1,6 +1,6 @@
 {
   "name": "@nexigen/entity-normalizer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Reactive entity infrastructure for complex client applications, built on MobX.",
   "license": "MIT",
   "type": "module",
