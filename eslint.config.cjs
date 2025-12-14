@@ -1,93 +1,93 @@
-const { defineConfig } = require("eslint/config");
+const { defineConfig } = require('eslint/config');
 
-const tsParser = require("@typescript-eslint/parser");
-const tsPlugin = require("@typescript-eslint/eslint-plugin");
-const importPlugin = require("eslint-plugin-import");
+const tsParser = require('@typescript-eslint/parser');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const importPlugin = require('eslint-plugin-import');
 
 module.exports = defineConfig([
   {
-    files: ["src/**/*.{ts,tsx}"],
-    ignores: ["dist/**", "node_modules/**"],
+    files: ['src/**/*.{ts,tsx}'],
+    ignores: ['dist/**', 'node_modules/**'],
 
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: "./tsconfig.json",
+        project: './tsconfig.eslint.json',
         tsconfigRootDir: __dirname,
-        sourceType: "module",
+        sourceType: 'module',
       },
     },
 
     plugins: {
-      "@typescript-eslint": tsPlugin,
+      '@typescript-eslint': tsPlugin,
       import: importPlugin,
     },
 
     settings: {
-      "import/resolver": {
+      'import/resolver': {
         typescript: {
-          project: "./tsconfig.json",
+          project: './tsconfig.eslint.json',
           alwaysTryTypes: true,
         },
         node: {
-          extensions: [".js", ".ts", ".tsx"],
+          extensions: ['.js', '.ts', '.tsx'],
         },
       },
     },
 
     rules: {
       /* ---------- correctness ---------- */
-      eqeqeq: "error",
-      curly: ["error", "all"],
-      "no-debugger": "error",
-      "no-console": ["error", { allow: ["warn", "error"] }],
+      eqeqeq: 'error',
+      curly: ['error', 'all'],
+      'no-debugger': 'error',
+      'no-console': ['error', { allow: ['warn', 'error'] }],
 
       /* ---------- typescript ---------- */
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_" },
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
       ],
-      "@typescript-eslint/no-use-before-define": "error",
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
+      '@typescript-eslint/no-use-before-define': 'error',
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
         {
-          prefer: "type-imports",
-          fixStyle: "inline-type-imports",
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
         },
       ],
 
       /* ---------- imports ---------- */
-      "import/no-unresolved": "error",
+      'import/no-unresolved': 'error',
 
-      "import/order": [
-        "error",
+      'import/order': [
+        'error',
         {
           groups: [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling", "index"],
-            "type",
+            'builtin',
+            'external',
+            'internal',
+            ['parent', 'sibling', 'index'],
+            'type',
           ],
-          "newlines-between": "always",
+          'newlines-between': 'always',
           alphabetize: {
-            order: "asc",
+            order: 'asc',
             caseInsensitive: true,
           },
         },
       ],
 
       /* ---------- architecture guards ---------- */
-      "no-restricted-imports": [
-        "error",
+      'no-restricted-imports': [
+        'error',
         {
           paths: [
             {
-              name: "mobx",
-              importNames: ["autorun", "reaction", "when"],
+              name: 'mobx',
+              importNames: ['autorun', 'reaction', 'when'],
               message:
-                "autorun / reaction / when are forbidden in Nexigen core. Use explicit command flow.",
+                'autorun / reaction / when are forbidden in Nexigen core. Use explicit command flow.',
             },
           ],
         },
