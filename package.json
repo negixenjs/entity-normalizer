@@ -1,6 +1,6 @@
 {
   "name": "@nexigen/entity-normalizer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Reactive entity infrastructure for complex client applications, built on MobX.",
   "license": "MIT",
   "type": "module",
@@ -17,6 +17,7 @@
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -54,5 +55,19 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "keywords": [
+    "entity",
+    "normalization",
+    "state-management",
+    "mobx",
+    "mobx-store",
+    "data-layer",
+    "client-state",
+    "normalized-cache",
+    "frontend-architecture",
+    "domain-driven-design",
+    "ddd",
+    "reactive"
+  ]
 }
