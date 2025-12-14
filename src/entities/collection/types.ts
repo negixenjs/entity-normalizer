@@ -1,0 +1,44 @@
+import { TEntitiesStore } from '../types';
+import { EntityCollection } from './entity-collection';
+import { MULTI_COLLECTION_TAG } from './marker';
+import { CoreEntitiesAPI } from '../../root/coreApi/types';
+import { EntityCleanerStore } from '../cleaner';
+
+export interface SystemDeps {
+  entities: TEntitiesStore;
+  entitiesCleaner: EntityCleanerStore;
+  notify: () => void;
+  entitiesApi: CoreEntitiesAPI;
+}
+export interface EntityCollectionOptions<T> {
+  entityKey: string;
+  pageSize?: number;
+  limit?: number;
+  reversed?: boolean;
+  hasNoMore?: boolean;
+  idAttribute?: keyof T;
+  collectionId: string;
+}
+
+export interface EntityCollectionSnapshot {
+  items: (string | number)[];
+  hasNoMore: boolean;
+  reversed: boolean;
+  limit: number;
+}
+
+export type GroupCollection<
+  T extends { id: string | number },
+  M,
+> = EntityCollection<T, M>;
+
+export interface MultiCollection<T extends { id: string | number }, M> {
+  [key: string]: GroupCollection<T, M> | any;
+
+  ensureGroup(group: string): GroupCollection<T, M>;
+  getSubCollections(): Map<string, GroupCollection<T, M>>;
+  getMultiSnapshot(): Record<string, EntityCollectionSnapshot>;
+  applyMultiSnapshot(snap: Record<string, EntityCollectionSnapshot>): void;
+
+  [MULTI_COLLECTION_TAG]: true;
+}

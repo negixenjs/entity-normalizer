@@ -1,0 +1,33 @@
+{
+  "name": "@negixen/entity-normalizer",
+  "version": "0.1.0",
+  "description": "Reactive entity infrastructure for complex client applications, built on MobX.",
+  "license": "MIT",
+  "type": "module",
+
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+
+  "files": [
+    "dist"
+  ],
+
+  "scripts": {
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc"
+  },
+
+  "peerDependencies": {
+    "mobx": "^6"
+  },
+
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "eslint": "^9.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "vitest": "^1.0.0"
+  }
+}
