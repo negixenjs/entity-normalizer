@@ -29,5 +29,3 @@ export class PostModel {
     return this.title.slice(0, 3) + '…';
   }
 }
-
-

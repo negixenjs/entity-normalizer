@@ -21,13 +21,12 @@ export class ViewerStore {
   private _viewer: EntityRecord<ViewerDto, ViewerModel>;
 
   constructor(private deps: Deps) {
-    this._viewer = this.deps.core.entities.createRecord<
-      ViewerDto,
-      ViewerModel
-    >({
-      entityKey: ENTITY_KEY.VIEWERS,
-      recordId: REF_SOURCE.CURRENT_VIEWER,
-    });
+    this._viewer = this.deps.core.entities.createRecord<ViewerDto, ViewerModel>(
+      {
+        entityKey: ENTITY_KEY.VIEWERS,
+        recordId: REF_SOURCE.CURRENT_VIEWER,
+      },
+    );
 
     makeAutoObservable(this, {}, { autoBind: true });
   }

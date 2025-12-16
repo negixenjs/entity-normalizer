@@ -10,7 +10,6 @@ import { ENTITY_KEY, REF_SOURCE } from '../../constants';
 
 import type { PostNormalizedDto } from './dto';
 
-
 const PAGE_LIMIT = 20;
 
 export class PostsStore {
@@ -18,7 +17,7 @@ export class PostsStore {
 
   constructor(
     private deps: StoreDeps<{
-      api: any
+      api: any;
     }>,
   ) {
     this.lists = this.deps.core.entities.createMultiCollection<

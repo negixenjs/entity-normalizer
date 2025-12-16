@@ -9,7 +9,10 @@ export class CommentModel {
   id: string;
   viewerId: string;
 
-  constructor(dto: CommentNormalizedDto, private readonly get: EntityGetter) {
+  constructor(
+    dto: CommentNormalizedDto,
+    private readonly get: EntityGetter,
+  ) {
     this.id = dto.id;
     this.viewerId = dto?.viewerId;
 
