@@ -21,11 +21,15 @@ export const ViewerRecordsExample = observer(() => {
           Load current viewer
         </button>
 
-        <button onClick={() => fetchViewerDetails.run({ params: { id: 'u2' } })}>
+        <button
+          onClick={() => fetchViewerDetails.run({ params: { id: 'u2' } })}
+        >
           Load viewer details (id=u2)
         </button>
 
-        <button onClick={() => fetchViewerDetails.run({ params: { id: 'u1' } })}>
+        <button
+          onClick={() => fetchViewerDetails.run({ params: { id: 'u1' } })}
+        >
           Load current viewer details (id=u1)
         </button>
       </div>
