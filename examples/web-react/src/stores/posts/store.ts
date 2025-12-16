@@ -32,15 +32,12 @@ export class PostsStore {
     makeAutoObservable(this);
   }
 
-  fetchPosts = createDuck(async ({ group, force }) => {
-    const response = await this.deps.api.Posts.getPosts(
-      {
-        page: 1,
-        limit: PAGE_LIMIT,
-        group,
-      },
-      { type: 'list', force },
-    );
+  fetchPosts = createDuck(async ({ group }) => {
+    const response = await this.deps.api.Posts.getPosts({
+      page: 1,
+      limit: PAGE_LIMIT,
+      group,
+    });
 
     this.lists[group].set(response);
   });
