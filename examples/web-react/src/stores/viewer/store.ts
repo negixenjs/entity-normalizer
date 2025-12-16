@@ -42,7 +42,7 @@ export class ViewerStore {
     this.current.set(dto);
   });
 
-  fetchViewerDetails = createDuck(async (id: string) => {
+  fetchViewerDetails = createDuck(async ({ id }: { id: string }) => {
     const dto = await this.deps.api.Viewer.getViewerById(id);
     this.details.set(dto);
   });

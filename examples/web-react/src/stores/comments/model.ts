@@ -7,6 +7,7 @@ import type { EntityGetter } from '@nexigen/entity-normalizer';
 
 export class CommentModel {
   id: string;
+  text: string;
   viewerId: string;
 
   constructor(
@@ -14,6 +15,7 @@ export class CommentModel {
     private readonly get: EntityGetter,
   ) {
     this.id = dto.id;
+    this.text = dto.text;
     this.viewerId = dto?.viewerId;
 
     makeAutoObservable(this, {}, { autoBind: true });
