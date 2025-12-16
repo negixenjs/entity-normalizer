@@ -8,16 +8,6 @@ export function createEntityCollection<T extends { id: string | number }, M>(
   options: EntityCollectionOptions<T>,
   system: SystemDeps,
 ): EntityCollection<T, M> {
-  if (__DEV__) {
-    if (!options.entityKey) {
-      console.warn('[EntityRecord] Missing "entityKey" in options');
-    }
-
-    if (!options.collectionId) {
-      console.warn('[EntityRecord] Missing "collectionId" in options');
-    }
-  }
-
   return new EntityCollection<T, M>(options, system);
 }
 

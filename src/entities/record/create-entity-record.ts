@@ -14,15 +14,5 @@ export function createEntityRecord<T extends { id: string | number }, M>(
     entitiesApi: CoreEntitiesAPI;
   },
 ) {
-  if (__DEV__) {
-    if (!options.entityKey) {
-      console.warn('[EntityRecord] Missing "entityKey" in options');
-    }
-
-    if (!options.recordId) {
-      console.warn('[EntityRecord] Missing "recordId" in options');
-    }
-  }
-
   return new EntityRecord<T, M>(options, system);
 }

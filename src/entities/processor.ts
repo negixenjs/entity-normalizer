@@ -127,11 +127,6 @@ export class EntityProcessor {
     for (const entityKey of Object.keys(snapshot)) {
       const schema = this.schemaMap[entityKey];
       if (!schema) {
-        if (__DEV__) {
-          console.warn(
-            `[hydrate] Schema not found for entityKey="${entityKey}". Skipping.`,
-          );
-        }
         continue;
       }
 
@@ -173,11 +168,6 @@ export class EntityProcessor {
     const schema = this.schemaMap[entityKey];
 
     if (!schema) {
-      if (__DEV__) {
-        console.warn(
-          `[process] Schema not found for entityKey="${entityKey}". Skipping.`,
-        );
-      }
       return [];
     }
 
