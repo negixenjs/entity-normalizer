@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import './stores';
+import './stores/register';
 import { createRoot } from 'react-dom/client';
 
 import './index.css';

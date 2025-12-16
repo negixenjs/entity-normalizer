@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 
 import { CommentItem } from './CommentItem';
-import { useStores } from '../../stores';
+import { useStores } from '../../stores/hooks';
 
 import type { CommentModel } from '../../stores/comments/model';
 

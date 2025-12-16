@@ -1,7 +1,5 @@
 import {
   createRootStore,
-  registerRootStore,
-  createStoreHooks,
 } from '@nexigen/entity-normalizer';
 
 import { CommentsStore } from './comments/store';
@@ -21,7 +19,4 @@ export const rootStore = createRootStore({
   services: {},
 });
 
-export const { useStores, useServices, useStore, useService, useCore } =
-  createStoreHooks<typeof rootStore>();
-
-registerRootStore(rootStore);
+export type AppRootStore = typeof rootStore;

@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 
-import { useStores } from '../../stores';
+import { ViewerCard } from './ViewerCard';
+import { useStores } from '../../stores/hooks';
 
 export const ViewerRecordsExample = observer(() => {
   const {
@@ -37,16 +38,12 @@ export const ViewerRecordsExample = observer(() => {
       <div style={{ display: 'flex', gap: 16 }}>
         <div style={{ flex: 1 }}>
           <h4>Current viewer</h4>
-          <pre style={{ fontSize: 12 }}>
-            {JSON.stringify(currentViewer, null, 2)}
-          </pre>
+          <ViewerCard viewer={currentViewer ?? null}/>
         </div>
 
         <div style={{ flex: 1 }}>
           <h4>Viewer details u2 / Current Viewer Details</h4>
-          <pre style={{ fontSize: 12 }}>
-            {JSON.stringify(viewerDetails, null, 2)}
-          </pre>
+          <ViewerCard viewer={viewerDetails ?? null}/>
         </div>
       </div>
     </div>

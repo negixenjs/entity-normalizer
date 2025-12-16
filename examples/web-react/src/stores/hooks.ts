@@ -1,6 +1,6 @@
 import { createStoreHooks } from '@nexigen/entity-normalizer';
 
-import { type rootStore } from './index';
+import { type AppRootStore } from './root-store';
 
 export const { useStores, useServices, useStore, useService, useCore } =
-  createStoreHooks<typeof rootStore>();
+  createStoreHooks<AppRootStore>();
