@@ -7,7 +7,7 @@ import { makeAutoObservable } from 'mobx';
 
 import { type CommentDto } from './dto';
 import { type CommentModel } from './model';
-import { type Api } from '../../../../shared/api';
+import { type Api } from '../../api';
 import { ENTITY_KEY, REF_SOURCE } from '../../constants';
 
 export class CommentsStore {

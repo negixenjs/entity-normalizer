@@ -6,7 +6,7 @@ import {
 import { makeAutoObservable } from 'mobx';
 
 import { type ViewerModel } from './model';
-import { type Api } from '../../../../shared/api';
+import { type Api } from '../../api';
 import { ENTITY_KEY, REF_SOURCE } from '../../constants';
 
 import type { ViewerDto } from './dto';
