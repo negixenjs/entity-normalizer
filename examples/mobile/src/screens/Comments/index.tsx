@@ -24,12 +24,13 @@ export const CommentsScreen = observer(() => {
   const [postId, setPostId] = useState<string | null>('p1');
 
   useEffect(() => {
-    if (!postId) {return;}
+    if (!postId) {
+      return;
+    }
     fetchComments.run({ params: { postId } });
   }, [postId, fetchComments]);
 
-  const isInitialLoading =
-    fetchComments.isLoading && list.isEmpty;
+  const isInitialLoading = fetchComments.isLoading && list.isEmpty;
 
   return (
     <View style={[styles.container, { paddingTop: top }]}>
@@ -47,10 +48,7 @@ export const CommentsScreen = observer(() => {
           return (
             <Pressable
               onPress={() => setPostId(item.id)}
-              style={[
-                styles.postChip,
-                active && styles.postChipActive,
-              ]}
+              style={[styles.postChip, active && styles.postChipActive]}
             >
               <Text
                 style={[
@@ -67,26 +65,18 @@ export const CommentsScreen = observer(() => {
       />
 
       {!postId && (
-        <Text style={styles.hint}>
-          Select a post to see comments
-        </Text>
+        <Text style={styles.hint}>Select a post to see comments</Text>
       )}
 
-      {isInitialLoading && (
-        <Text style={styles.loading}>Loading…</Text>
-      )}
+      {isInitialLoading && <Text style={styles.loading}>Loading…</Text>}
 
       {!isInitialLoading && postId && (
         <FlatList
           data={list.getList}
           keyExtractor={(item: CommentModel) => item.id}
           contentContainerStyle={styles.commentsList}
-          renderItem={({ item }) => (
-            <CommentItem comment={item} />
-          )}
-          ListEmptyComponent={
-            <Text style={styles.empty}>No comments</Text>
-          }
+          renderItem={({ item }) => <CommentItem comment={item} />}
+          ListEmptyComponent={<Text style={styles.empty}>No comments</Text>}
         />
       )}
     </View>

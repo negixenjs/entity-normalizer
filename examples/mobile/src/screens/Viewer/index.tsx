@@ -33,18 +33,14 @@ export const ViewerScreen = observer(() => {
 
         <Pressable
           style={styles.actionButton}
-          onPress={() =>
-            fetchViewerDetails.run({ params: { id: 'u2' } })
-          }
+          onPress={() => fetchViewerDetails.run({ params: { id: 'u2' } })}
         >
           <Text style={styles.actionText}>Load viewer u2 button</Text>
         </Pressable>
 
         <Pressable
           style={styles.actionButton}
-          onPress={() =>
-            fetchViewerDetails.run({ params: { id: 'u1' } })
-          }
+          onPress={() => fetchViewerDetails.run({ params: { id: 'u1' } })}
         >
           <Text style={styles.actionText}>Load viewer u1 button</Text>
         </Pressable>

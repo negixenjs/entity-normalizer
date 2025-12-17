@@ -21,8 +21,7 @@ export const PostsScreen = observer(() => {
     fetchState.run({ params: { group } });
   }, [group, fetchState]);
 
-  const isInitialLoading =
-    fetchState.isLoading && collection.isEmpty;
+  const isInitialLoading = fetchState.isLoading && collection.isEmpty;
 
   const isLoadingMore = fetchMorePosts[group].isLoading;
 
@@ -45,14 +44,12 @@ export const PostsScreen = observer(() => {
           <Text style={styles.tabText}>Archived</Text>
         </Pressable>
       </View>
-      {isInitialLoading && (
-        <Text style={styles.loading}>Loading…</Text>
-      )}
+      {isInitialLoading && <Text style={styles.loading}>Loading…</Text>}
       {!isInitialLoading && (
         <FlatList
           key={group}
           data={collection.getList}
-          keyExtractor={(item) => item.id}
+          keyExtractor={item => item.id}
           numColumns={2}
           contentContainerStyle={styles.list}
           renderItem={({ item }) => (
@@ -67,9 +64,7 @@ export const PostsScreen = observer(() => {
           }}
           onEndReachedThreshold={0.6}
           ListFooterComponent={
-            isLoadingMore ? (
-              <Text style={styles.loading}>Loading…</Text>
-            ) : null
+            isLoadingMore ? <Text style={styles.loading}>Loading…</Text> : null
           }
         />
       )}
