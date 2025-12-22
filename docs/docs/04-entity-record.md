@@ -43,6 +43,7 @@ const viewerRecord = this.deps.core.entities.createRecord<
 ```ts
 record.set(item);
 record.update(item);
+record.resolve(tempId, realItem);
 record.reset();
 
 record.data; // Model | null

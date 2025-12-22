@@ -125,6 +125,16 @@ Updates entity data **without changing the record binding**.
 
 ---
 
+### resolveById(tempId: string | number, real: T)
+
+Resolves an optimistic entity in the collection.
+
+```ts
+record.resolve(tempId, realEntity);
+```
+
+---
+
 ### reset()
 
 ```ts

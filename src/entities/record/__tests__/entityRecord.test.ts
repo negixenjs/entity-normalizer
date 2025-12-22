@@ -237,4 +237,49 @@ describe('EntityRecord', () => {
     expect(calls.every(c => c.sourceRefId === 'record-1')).toBe(true);
     expect(calls.every(c => c.entityKey === 'post')).toBe(true);
   });
+
+  test('resolve() switches pointer from tempId to realId', () => {
+    record.set({ id: 'tmp-1', title: 'Optimistic' });
+    root.notify.mockClear();
+
+    record.resolve('tmp-1', { id: 'real-1', title: 'Real' });
+
+    expect(record.entityId).toBe('real-1');
+    expect(root.entities.getEntity('post', 'real-1')).toEqual({
+      id: 'real-1',
+      title: 'Real',
+    });
+
+    expect(root.notify).toHaveBeenCalledTimes(1);
+  });
+
+  test('resolve() schedules temp entity for cleanup', () => {
+    record.set({ id: 'tmp-1' });
+
+    record.resolve('tmp-1', { id: 'real-1' });
+
+    expect(root.entitiesCleaner.calls).toEqual([
+      ['post', ['tmp-1'], expect.stringContaining('record-1')],
+    ]);
+  });
+
+  test('resolve() does nothing if record is not pointing to tempId', () => {
+    record.set({ id: 'other' });
+    const p = root.notify.mock.calls.length;
+
+    record.resolve('tmp-1', { id: 'real-1' });
+
+    expect(record.entityId).toBe('other');
+    expect(root.notify.mock.calls.length).toBe(p);
+    expect(root.entitiesCleaner.calls).toEqual([]);
+  });
+
+  test('resolve() works with numeric ids', () => {
+    record.set({ id: 999 });
+
+    record.resolve(999, { id: 1 });
+
+    expect(record.entityId).toBe(1);
+    expect(root.entities.getEntity('post', 1)).toEqual({ id: 1 });
+  });
 });

@@ -120,6 +120,16 @@ collection.removeIds([id1, id2]);
 
 ---
 
+### resolveById(tempId: string | number, real: T)
+
+Resolves an optimistic entity in the collection.
+
+```ts
+collection.resolveById(tempId, realEntity);
+```
+
+---
+
 ### reset(options?)
 
 Clears the collection.

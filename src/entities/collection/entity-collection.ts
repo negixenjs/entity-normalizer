@@ -201,6 +201,28 @@ export class EntityCollection<T extends { id: string | number }, M> {
     this.sync();
   }
 
+  resolveById(tempId: string | number, real: T) {
+    const index = this.findIndexById(tempId);
+    if (index === -1) {
+      return;
+    }
+
+    const schema = this.entitiesApi.getSchema(this.entityKey);
+    const realId = schema.getId(real);
+
+    this.items[index] = realId;
+
+    this.processData([real]);
+
+    this.entitiesCleaner.deleteCascade(
+      this.entityKey,
+      [tempId],
+      `${PREFIX.COLLECTION}${this.collectionId}`,
+    );
+
+    this.sync();
+  }
+
   setHasNoMore(value: boolean) {
     this.hasNoMore = value;
     this.sync();

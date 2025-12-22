@@ -33,6 +33,9 @@ export interface EntityRecord<T, M> {
   /** Clear record and cascade delete */
   reset(): void;
 
+  /** Resolve temp id to real entity */
+  resolve(tempId: string | number, real: T): void;
+
   // -------- snapshot --------
 
   /** Serialize record state */

@@ -43,6 +43,7 @@ collection.updateItem(item)
 collection.reset()
 collection.removeById(id)
 collection.removeIds(ids)
+collection.resolveById(tempId, realItem)
 collection.setHasNoMore(value)
 ```
 

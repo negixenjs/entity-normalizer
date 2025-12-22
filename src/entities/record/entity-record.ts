@@ -84,6 +84,24 @@ export class EntityRecord<T extends { id: string | number }, M> {
     this.sync();
   }
 
+  resolve(tempId: string | number, real: T) {
+    if (this.id !== tempId) {
+      return;
+    }
+
+    const realId = this.process(real);
+
+    this.id = realId;
+
+    this.entitiesCleaner.deleteCascade(
+      this.entityKey,
+      [tempId],
+      `${PREFIX.RECORD}${this.recordId}`,
+    );
+
+    this.sync();
+  }
+
   // ---------------- GETTERS ----------------
 
   get data(): M | undefined {

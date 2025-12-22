@@ -41,6 +41,7 @@ export interface EntityCollectionActions<T, Id = string | number> {
 
   removeById(id: Id): void;
   removeIds(ids: Id[]): void;
+  resolveById(tempId: Id, real: T): void;
 
   reset(): void;
   setHasNoMore(value: boolean): void;

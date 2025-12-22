@@ -277,4 +277,62 @@ describe('EntityCollection', () => {
     expect(c.pageNumber).toBe(2);
     expect(c.offset).toBe(4);
   });
+
+  describe('resolveById()', () => {
+    test('replaces temp id with real id in the same position', () => {
+      c.set([{ id: 'a' }, { id: 'tmp-1' }, { id: 'b' }]);
+      const p = system.persist.pointers;
+
+      c.resolveById('tmp-1', { id: 'real-1', title: 'Real' });
+
+      expect(c.asArray).toEqual(['a', 'real-1', 'b']);
+      expect(system.persist.pointers).toBe(p + 1);
+    });
+
+    test('upserts real entity and removes temp entity', () => {
+      c.set([{ id: 'tmp-1' }]);
+
+      c.resolveById('tmp-1', { id: 'real-1', title: 'Real post' });
+
+      // real entity exists
+      expect(system.entities.getEntity('post', 'real-1')).toEqual({
+        id: 'real-1',
+        title: 'Real post',
+      });
+
+      // temp entity removed via cleaner
+      expect(system.entitiesCleaner.calls).toEqual([
+        ['post', ['tmp-1'], 'collection:col-1'],
+      ]);
+    });
+
+    test('keeps order for multiple items', () => {
+      c.set([{ id: 'tmp-1' }, { id: 'x' }, { id: 'y' }]);
+
+      c.resolveById('tmp-1', { id: 'real-1' });
+
+      expect(c.asArray).toEqual(['real-1', 'x', 'y']);
+    });
+
+    test('does nothing if tempId is not found', () => {
+      c.set([{ id: 'a' }, { id: 'b' }]);
+      const snapshot = c.asArray.slice();
+      const p = system.persist.pointers;
+
+      c.resolveById('missing', { id: 'real-x' });
+
+      expect(c.asArray).toEqual(snapshot);
+      expect(system.persist.pointers).toBe(p);
+      expect(system.entitiesCleaner.calls).toEqual([]);
+    });
+
+    test('works with non-string ids', () => {
+      c.set([{ id: 1 }, { id: 999 }]);
+
+      c.resolveById(999, { id: 42 });
+
+      expect(c.asArray).toEqual([1, 42]);
+      expect(system.entities.getEntity('post', 42)).toEqual({ id: 42 });
+    });
+  });
 });
