@@ -1,13 +1,9 @@
 {
   "name": "@nexigen/entity-normalizer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Reactive entity infrastructure for complex client applications, built on MobX.",
   "license": "MIT",
   "type": "module",
-  "private": true,
-  "workspaces": [
-    "examples/*"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/nexigenjs/entity-normalizer.git"
@@ -33,9 +29,7 @@
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
     "build": "tsc -p tsconfig.build.json",
-    "prepare": "husky install",
-    "dev:web": "yarn workspace web-react dev",
-    "dev:mobile": "yarn workspace mobile start"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
