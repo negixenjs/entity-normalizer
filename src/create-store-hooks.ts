@@ -1,6 +1,6 @@
 import { getRootStore } from './di/register-root-store';
 
-import type { RootStore } from './root/RootStore';
+import type { RootStore } from './root/root-store';
 
 /**
  * Factory that returns typed hooks bound to a particular RootStore type.

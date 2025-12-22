@@ -1,4 +1,4 @@
-import { RootStore } from './RootStore';
+import { RootStore } from './root-store';
 
 import type { CreateRootStoreConfig } from './public';
 

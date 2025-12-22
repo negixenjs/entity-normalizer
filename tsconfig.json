@@ -4,7 +4,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
 
     "declaration": true,
     "outDir": "dist",
@@ -12,7 +12,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@nexigen/*": ["src/*"]
+      "@nexigen/entity-normalizer": ["src/index.ts"],
+      "@nexigen/entity-normalizer/*": ["src/*"]
     }
   },
 

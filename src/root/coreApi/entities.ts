@@ -8,6 +8,7 @@ import {
 } from '../../entities/processor';
 import { createEntityRecord } from '../../entities/record/create-entity-record';
 
+import type { CoreEntitiesAPI } from './types';
 import type { EntityCleanerStore } from '../../entities/cleaner';
 import type { MultiEntityCollection } from '../../entities/collection/public';
 import type { EntityCollectionOptions } from '../../entities/collection/types';
@@ -18,7 +19,6 @@ import type {
   TEntitiesStore,
 } from '../../entities/types';
 import type { TSchemaMap, PersistenceNotifier } from '../types';
-import type { CoreEntitiesAPI } from './types';
 
 export function createEntitiesAPI(deps: {
   entities: TEntitiesStore;

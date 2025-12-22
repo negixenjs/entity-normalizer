@@ -4,6 +4,10 @@
   "description": "Reactive entity infrastructure for complex client applications, built on MobX.",
   "license": "MIT",
   "type": "module",
+  "private": true,
+  "workspaces": [
+    "examples/*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/nexigenjs/entity-normalizer.git"
@@ -12,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/nexigenjs/entity-normalizer/issues"
   },
+  "source": "src/index.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -27,8 +32,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
-    "build": "tsc",
-    "prepare": "husky install"
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "husky install",
+    "dev:web": "yarn workspace web-react dev",
+    "dev:mobile": "yarn workspace mobile start"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -36,7 +43,8 @@
     ]
   },
   "peerDependencies": {
-    "mobx": ">=6.12 <7"
+    "mobx": ">=6.12 <7",
+    "react": ">=18"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

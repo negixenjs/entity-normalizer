@@ -1,4 +1,4 @@
-import type { RootStore } from '../root/RootStore';
+import type { RootStore } from '../root/root-store';
 
 /**
  * Internal storage for the global RootStore reference.

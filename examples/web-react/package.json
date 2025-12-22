@@ -14,7 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@nexigen/entity-normalizer": "^0.1.6",
+    "@nexigen/entity-normalizer": "*",
     "@typescript-eslint/eslint-plugin": "8.31.1",
     "eslint": "9.26.0",
     "eslint-config-prettier": "^10.1.8",

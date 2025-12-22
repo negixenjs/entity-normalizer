@@ -1,6 +1,6 @@
 import type { AnySchema, TEntitiesStore } from '../entities';
 import type { CoreAPI } from './coreApi/types';
-import type { RootStore } from './RootStore';
+import type { RootStore } from './root-store';
 
 export type DomainDeps<
   TStores = {},
