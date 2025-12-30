@@ -28,3 +28,5 @@ export type RunOptions<TParams, TResult> = {
 
   retryStrategy?: RetryStrategy;
 };
+
+export type ExecutionIntent = 'normal' | 'refresh';

@@ -163,6 +163,33 @@ Does **not** cancel an in-flight request.
 
 ---
 
+## Refreshing a Duck
+
+```ts
+duck.refresh();
+```
+
+Re-executes the duck using the **last run parameters**.
+
+`refresh()` is intended for **explicit revalidation** scenarios such as:
+
+- pull-to-refresh
+- reconnect
+- background sync
+- manual data revalidation
+
+### Refresh Behavior
+
+- does nothing if the duck has never run
+- does not require passing params again
+- preserves the same observable lifecycle as `run`
+- bypasses transport-level cache when supported
+- does **not** change retry configuration
+
+`refresh()` is explicit by design and is **not** an alias for `run()`.
+
+---
+
 ## Side Effects
 
 Side effects should be implemented using:

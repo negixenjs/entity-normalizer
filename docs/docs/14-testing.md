@@ -7,7 +7,7 @@ Nexigen is designed to be tested at the data layer.
 ## Current Coverage
 
 Test Suites: 17 passed, 17 total
-Tests: 154 passed, 154 total
+Tests: 163 passed, 163 total
 
 ---
 

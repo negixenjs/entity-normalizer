@@ -1,4 +1,4 @@
-import type { AxiosError } from './types';
+import type { AxiosError, ExecutionIntent } from './types';
 
 export interface RetryStrategy {
   retries: number;
@@ -16,8 +16,16 @@ export type RunOptions<TParams, TResult> = {
   retryStrategy?: RetryStrategy;
 };
 
+export interface PublicExecutionContext {
+  runWith<T>(intent: ExecutionIntent, fn: () => Promise<T>): Promise<T>;
+
+  current(): ExecutionIntent;
+  is(intent: ExecutionIntent): boolean;
+}
+
 export interface PublicAsyncDuck<TParams, TResult> {
   run(options?: RunOptions<TParams, TResult>): Promise<TResult | undefined>;
+  refresh(): Promise<TResult | undefined>;
 
   readonly isLoading: boolean;
   readonly isRetrying: boolean;

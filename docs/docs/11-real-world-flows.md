@@ -10,7 +10,7 @@ This document demonstrates **real application flows** using Nexigen.
 login = createDuck(async () => {
   const tokens = await api.login();
   await Tokens.save(tokens);
-  await viewerStore.fetchCurrentViewer.run({ force: true });
+  await viewerStore.fetchCurrentViewer.run();
   viewerStore.setIsLoggedIn(true);
 });
 ```
