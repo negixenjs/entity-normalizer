@@ -1,5 +1,6 @@
 import { makeObservable, observable, action } from 'mobx';
 
+import { executionAsyncContext } from './execution-context';
 import { DUCK_TAG } from './marker';
 import { defaultRetryStrategy } from './retry';
 
@@ -16,6 +17,8 @@ export class AsyncDuck<TParams, TResult> {
   private _keyed = new Map<string, AsyncDuck<TParams, TResult>>();
   private _proxy?: Readonly<this & Record<string, AsyncDuck<TParams, TResult>>>;
   private _pendingPromise: Promise<TResult | undefined> | null = null;
+
+  private _lastRunParams?: TParams;
 
   constructor(fn: (params?: TParams) => Promise<TResult>) {
     this.fn = fn;
@@ -95,6 +98,7 @@ export class AsyncDuck<TParams, TResult> {
     this._data = null;
     this._hasEverRun = false;
     this._pendingPromise = null;
+    this._lastRunParams = undefined;
   }
 
   // -------------------------------------
@@ -166,6 +170,10 @@ export class AsyncDuck<TParams, TResult> {
 
     const { params, onSuccess, onError, retryStrategy } = options ?? {};
 
+    if (params !== undefined) {
+      this._lastRunParams = params;
+    }
+
     const isRetry = !!retryStrategy;
     this.setLoading(isRetry);
 
@@ -186,6 +194,16 @@ export class AsyncDuck<TParams, TResult> {
     })();
 
     return this._pendingPromise;
+  }
+
+  refresh(): Promise<TResult | undefined> {
+    if (!this._lastRunParams) {
+      return Promise.resolve(undefined);
+    }
+
+    return executionAsyncContext.runWith('refresh', () =>
+      this.run({ params: this._lastRunParams }),
+    );
   }
 
   // -------------------------------------

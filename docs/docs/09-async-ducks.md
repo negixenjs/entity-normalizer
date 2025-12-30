@@ -53,6 +53,7 @@ All properties are observable.
 
 ```ts
 login.run();
+posts.refresh();
 ```
 
 Running a duck:
@@ -61,6 +62,21 @@ Running a duck:
 - resets error
 - executes async function
 - updates data or error
+
+---
+
+### Refreshing a Duck
+
+```ts
+posts.refresh();
+```
+
+`refresh()` re-runs the last execution with the same parameters.
+
+It is intended for **explicit revalidation**, such as pull-to-refresh or manual reloads.
+
+Unlike `run()`, refresh may bypass transport-level caching
+(depending on the underlying API implementation).
 
 ---
 

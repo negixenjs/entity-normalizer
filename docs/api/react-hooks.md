@@ -114,10 +114,7 @@ const ExploreContainer = () => {
       list={activeList}
       isLoading={fetchPostsActive.isLoading}
       isLoadingMore={fetchMorePostsActive.isLoading}
-      onRefresh={() =>
-        fetchPostsActive.run({
-          params: { group: GROUPS.ACTIVE, force: true },
-        })
+      onRefresh={fetchPostsActive.refresh}
       }
       getMorePosts={() =>
         fetchMorePostsActive.run({

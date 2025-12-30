@@ -1,4 +1,4 @@
-import { createDuck } from './async';
+import { createDuck, executionAsyncContext } from './async';
 import { createStoreHooks } from './create-store-hooks';
 import { registerRootStore } from './di';
 import { createEntitySchema } from './entities/create-entity-schema';
@@ -12,6 +12,7 @@ export * from './entities/public';
 export * from './async/public';
 
 export {
+  executionAsyncContext,
   registerRootStore,
   createRootStore,
   createStoreHooks,
